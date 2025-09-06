@@ -1,0 +1,5 @@
+regionCode,periodKey,metric,agg,value,date,source
+IN-MH-WRD,2019-Post,NDVI,mean,0.62,2019-11-01,Study Wardha NDVI (2018-2020)
+IN-MH-WRD,2025-07,NDVI,mean,0.55,2025-07-15,Sentinel-2 Derived
+IN-MH-WRD,2025-08,NDVI,mean,0.64,2025-08-15,Sentinel-2 Derived
+IN-MH-WRD,2025-09,NDVI,mean,0.6,2025-09-15,Sentinel-2 Derived

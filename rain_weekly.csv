@@ -1,0 +1,4 @@
+regionCode,regionName,periodKey,window,total_mm,normal_mm,anomaly_mm,startDate,endDate,source
+IN-MH-WRD,Wardha,2025-07,monthly,280.5,295,-14.5,2025-07-01,2025-07-31,The Weather Network
+IN-MH-WRD,Wardha,2025-08,monthly,370.9,412.1,-41.2,2025-08-01,2025-08-31,The Weather Network
+IN-MH-WRD,Wardha,2025-09,monthly,210.3,225,-14.7,2025-09-01,2025-09-30,The Weather Network
