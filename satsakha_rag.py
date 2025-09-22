@@ -1,4 +1,5 @@
 import os
+import torch
 from dotenv import load_dotenv
 from transformers import pipeline
 
@@ -10,8 +11,6 @@ NEO4J_USER = os.getenv("NEO4J_USER")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 HF_TOKEN = ""
 
-
-import os
 from neo4j import GraphDatabase
 from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
@@ -127,10 +126,10 @@ def build_context(region_code, period_key=None):
 
 
 
-
 # ------------------- Local Hugging Face Model -------------------
 HF_MODEL = "google/flan-t5-base"
-generator = pipeline("text2text-generation", model=HF_MODEL)
+device = 0 if torch.cuda.is_available() else -1
+generator = pipeline("text2text-generation", model=HF_MODEL, device=device)
 
 PROMPT_TEMPLATE = """You are SatSakha, a GeoAI assistant.
 Use ONLY the facts below to answer the user's question. Do NOT invent facts.
@@ -164,12 +163,12 @@ if __name__ == "__main__":
     test_q = "Crop for Wardha in January"
     print(f"\n[Test Input] {test_q}")
     print("--- SATSAKHA ANSWER ---")
-    print(answer_question(test_q, region_code="IN-MH-WRD"))
+    # print(answer_question(test_q, region_code="IN-MH-WRD"))
 
     # Then go into interactive loop
-    while True:
-        q = input("\nEnter question (or 'quit'): ").strip()
-        if q.lower() in ("quit", "exit"): break
-        ans = answer_question(q, region_code="IN-MH-WRD")
-        print("\n--- SATSAKHA ANSWER ---")
-        print(ans)
+    # while True:
+    #     q = input("\nEnter question (or 'quit'): ").strip()
+    #     if q.lower() in ("quit", "exit"): break
+    #     ans = answer_question(q, region_code="IN-MH-WRD")
+    #     print("\n--- SATSAKHA ANSWER ---")
+    #     print(ans)
